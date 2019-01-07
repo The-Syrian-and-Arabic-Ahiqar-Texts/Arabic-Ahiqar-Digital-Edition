@@ -3,7 +3,7 @@ import VueGraphQL from 'vue-graphql'
 
 Vue.use(VueGraphQL)
 
-const graphqlApi = 'ahiqar'
+const graphqlApi = 'https://db.brown-devost.com/graphql'
 const auth = 'REPLACE_WITH_YOUR_AUTH_TOKEN'
 
 const client = new VueGraphQL.Client(graphqlApi, {
