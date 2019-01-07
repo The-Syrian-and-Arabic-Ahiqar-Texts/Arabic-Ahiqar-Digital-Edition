@@ -38,13 +38,13 @@ export default {
 #ahiqar-menu {
   width: 98vw;
   height: 40px;
-  background: lightblue;
+  background: lightyellow;
 }
 #ahiqar-manuscript {
   width: 30%;
   height: calc(96vh - 200px);
   max-height: calc(96vh - 200px);
-  background: pink;
+  background: lightyellow;
   float: right;
   text-align: justify;
 }
@@ -54,7 +54,7 @@ export default {
   max-height: calc(96vh - 200px);
   float: left;
   /* margin-right: 10px; */
-  background: lightgreen;
+  background: lightblue;
 }
 #ahiqar-instant-variants{
   position: absolute;
@@ -62,7 +62,7 @@ export default {
   left: 8px;
   width: 98vw;
   height: 130px;
-  background: lightblue;
+  background: tan;
   overflow: auto;
   text-align: justify;
 }

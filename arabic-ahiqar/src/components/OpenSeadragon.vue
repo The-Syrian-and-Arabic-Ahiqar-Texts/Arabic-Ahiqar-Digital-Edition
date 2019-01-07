@@ -113,7 +113,8 @@ export default {
 }
         `)
           .then(res => {
-            this.tileSources = res.pageByPageId.urlByUrlId.url + res.pageByPageId.filename
+            console.log(res)
+            this.tileSources = res.pageByPageId.urlByUrlId.url + res.pageByPageId.filename +'/info.json'
             this.viewer.open(this.tileSources)
             console.log(this.tileSources)
           })
