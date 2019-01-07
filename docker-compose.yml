@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  PostgreSQL:
+    image: postgres:10-alpine                                                                                                                                    
+    container_name: PostgreSQL
+    restart: always
+    environment: 
+      POSTGRES_PASSWORD: elrahiq
+    expose:
+      - 5432
+    ports:
+      - 5443:5432
+    volumes:                                                                                                                                                 
+      - ./postgres:/var/lib/postgresql/data
+    networks:                                                                                                                                                
+      - ahiqar 
+
+  IIIF-Server:
+    image: bdlss/loris-grok-docker
+    container_name: iiif-server
+    restart: always
+    expose:
+      - 5004
+    ports:
+      - 5004:5004
+    volumes:
+      - ./iiif/:/usr/local/share/images/
+    networks:
+      - ahiqar
+#    labels:
+#      - "traefik.docker.network=traefik_proxy"
+#      - "traefik.enable=true"
+#      - "traefik.port=5004"
+#      - "traefik.frontend.rule=Host:iiif-ahiqar.brown-devost.com"
+
+networks:
+  ahiqar:
