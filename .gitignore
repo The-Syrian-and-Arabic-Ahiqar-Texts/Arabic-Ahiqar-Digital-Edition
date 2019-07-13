@@ -1,2 +1,4 @@
 node_modules
 arabic-ahiqar/node_modules
+.idea
+.vscode
