@@ -1,0 +1,6 @@
+اتور,placeName
+نينوى,placeName
+الموصل,placeName
+بقعة نسرين,placeName
+جبل صاحو,placeName
+مصر,placeName

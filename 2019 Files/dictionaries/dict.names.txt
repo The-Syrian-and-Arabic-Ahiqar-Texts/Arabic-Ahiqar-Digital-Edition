@@ -1,0 +1,14 @@
+حيقار,persName
+سنحاريب,persName
+نادان,persName
+سرحادوم,persName
+أبو سميك,persName
+اشفغني, persName
+طبشاليم, persName
+نبوحال,persName
+ابيقام,persName
+فرعون,persName
+اخيش,persName
+شاه حليم,persName
+سمحاليم,persName
+مديفر, persName
