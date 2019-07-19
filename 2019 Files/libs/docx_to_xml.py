@@ -2,7 +2,7 @@ import os
 import re
 import sys
 from docx import Document
-from console_message import ok, info, warning, error
+from libs.console_message import ok, info, warning, error
 
 
 def __prepare_xml_output_folder(processed_folder):
@@ -40,12 +40,12 @@ in a <pb> milestone. Otherwise wrap the whole line in an <ab>.
             info("\tFound " + folder_file)
 
             # Create an output file for the updated file
-            write_file = open(processed_folder + folder_file[0:-5] + ".xml", "w")
+            write_file = open(processed_folder + folder_file[0:-5] + ".xml", "w", encoding='utf8')
 
             # Open the file to be read
             doc = Document(unprocessed_folder + folder_file)
             for para in doc.paragraphs:
-                line = para.text.encode("utf-8").strip()  # Strip any whitespace
+                line = str(para.text.strip())  # Strip any whitespace
                 if folio_designation.match(line):  # If line matches folio regex, wrap it in a <pb>
                     line = leave_alpha_num.sub('', line)
                     write_file.write("<pb n=\"" + line + "\"/>\n")

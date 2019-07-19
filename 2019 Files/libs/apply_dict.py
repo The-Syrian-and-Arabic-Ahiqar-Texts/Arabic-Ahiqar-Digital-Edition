@@ -1,7 +1,7 @@
 import os
 import re
 import sys
-from console_message import ok, info, warning, error
+from libs.console_message import ok, info, warning, error
 
 
 def __check_dictionary_folder(dictionary_folder):
@@ -52,7 +52,7 @@ def __build_dict(dict_folder):
             info("\t\tFound " + folder_file)
 
             # Open the dictionary file
-            with open(dict_folder + folder_file) as fp:
+            with open(dict_folder + folder_file, encoding='utf8') as fp:
                 line = fp.readline()
                 lineCount = 1
 
@@ -94,17 +94,17 @@ def __apply_dictionary(dictionary, xml_path, output_path):
         if folder_file.endswith(".xml"):
             info("\t\tFound " + folder_file)
             # Create an output file
-            write_file = open(output_path + folder_file[0:-4] + ".xml", "w")
+            write_file = open(output_path + folder_file[0:-4] + ".xml", "w", encoding='utf8')
 
             # Open the file that will be read
-            with open(xml_path + folder_file) as fp:
+            with open(xml_path + folder_file, encoding='utf8') as fp:
                 line = fp.readline()
 
                 # Loop over every line (see line 62)
                 while line:
 
                     # Check if any of the keys in the dictionary occur in the line
-                    for key, value in dictionary.iteritems():
+                    for key, value in dictionary.items():
                         # If a key exists, then replace it
                         if key in line:
                             line = line.replace(key, "\n<" + value + ">" + key + "</" + value + ">\n")

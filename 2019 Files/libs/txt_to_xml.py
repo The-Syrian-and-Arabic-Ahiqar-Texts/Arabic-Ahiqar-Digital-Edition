@@ -17,10 +17,10 @@ def convert_files():
             print("Found " + folder_file)
 
             # Create an output file for the updated file
-            write_file = open(processed_folder + folder_file[0:-4] + ".xml", "w")
+            write_file = open(processed_folder + folder_file[0:-4] + ".xml", "w", encoding='utf8')
 
             # Open the file to be read
-            with open(unprocessed_folder + folder_file) as fp:
+            with open(unprocessed_folder + folder_file, encoding='utf8') as fp:
                 line = fp.readline()
 
                 # Loop through every line
