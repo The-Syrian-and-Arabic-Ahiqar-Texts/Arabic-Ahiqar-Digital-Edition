@@ -32,7 +32,9 @@ in a <pb> milestone. Otherwise wrap the whole line in an <ab>.
     info("\nConverting the docx files to xml.")
     processed_folder = __prepare_xml_output_folder(processed_folder)
     folio_designation = re.compile(r'.*[f|p].*\..*[0-9].*')
+    column_designation = re.compile(r'^.*[C|c]ol.*\..*[0-9].*$')
     leave_alpha_num = re.compile('[^A-z0-9.]')
+    leave_num = re.compile('[^0-9]')
 
     # Get all files in the folder
     for folder_file in os.listdir(unprocessed_folder):
@@ -46,11 +48,16 @@ in a <pb> milestone. Otherwise wrap the whole line in an <ab>.
             doc = Document(unprocessed_folder + folder_file)
             for para in doc.paragraphs:
                 line = str(para.text.strip())  # Strip any whitespace
-                if folio_designation.match(line):  # If line matches folio regex, wrap it in a <pb>
+                is_folio = folio_designation.match(line)
+                is_column = column_designation.match(line)
+                if not is_folio and not is_column:  # if it isn't a folio or col break, then it is text. Use <ab></ab>
+                    write_file.write("<ab>" + line + "</ab>\n")
+                elif is_folio:  # Otherwise, if it matches the folio regex, wrap it in a <pb>
                     line = leave_alpha_num.sub('', line)
                     write_file.write("<pb n=\"" + line + "\"/>\n")
-                else:  # Otherwise wrap it in a <ab>
-                    write_file.write("<ab>" + line + "</ab>\n")
+                elif is_column:  # Otherwise, if it matches column regex, wrap it in a <cb>
+                    line = leave_num.sub('', line)
+                    write_file.write("<cb n=\"" + line + "\"/>\n")
 
             # Close the file
             write_file.close()
