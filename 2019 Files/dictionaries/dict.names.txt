@@ -12,3 +12,4 @@
 شاه حليم,persName
 سمحاليم,persName
 مديفر, persName
+حكيم,persName
